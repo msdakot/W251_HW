@@ -1,2 +1,3 @@
-# W251_HW
-W251 Deep Learning in the Cloud and at the Edge Homework Repository
+# Deep Learning in the Cloud and at the Edge Homework Repository
+
+This is a homework repository for W251 course at UC Berkeley MIDS.
