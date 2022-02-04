@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloud-listener
+  name: image-processor-deployment
 spec:
   selector:
     matchLabels:
-      app: cloud-listener
+      app: image-processor
   replicas: 1 # tells deployment to run 1 pods matching the template
   template:
     metadata:
       labels:
-        app: cloud-listener
+        app: image-processor
     spec:
       containers:
-      - name: cloud-listener
-        image: dhruvi04/x86-cloud-listener
+      - name: image-processor
+        image: dhruvi04/image-processor

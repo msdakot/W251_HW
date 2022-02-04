@@ -1,7 +1,7 @@
 sudo systemctl start k3s
 kubectl apply -f cloud_broker/deployment.yaml
 kubectl apply -f cloud_broker/service.yaml
-kubectl apply -f cloud_logger/cloud_logger.yaml
+kubectl apply -f image_reader/image_reader.yaml
 
 kubectl get service
 

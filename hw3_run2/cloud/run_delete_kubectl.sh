@@ -1,5 +1,5 @@
 kubectl delete deployment cloud-mosquitto-deployment
-kubectl delete deployment cloud-listener
+kubectl delete deployment image-processor-deployment
 kubectl delete service cloud-mosquitto-service
 
 sudo systemctl stop k3s
