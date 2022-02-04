@@ -1,2 +1,2 @@
-docker build -t dhruvi04/cli-cloud-bridge -f Dockerfile .
-docker push dhruvi04/cli-cloud-bridge
+docker build -t dhruvi04/hw3-cloud-bridge -f Dockerfile .
+docker push dhruvi04/hw3-cloud-bridge

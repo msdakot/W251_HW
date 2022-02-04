@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cli-could-bridge
+  name: cli-cloud-bridge
 spec:
   selector:
     matchLabels:
-      app: cli-could-bridge
+      app: cli-cloud-bridge
   replicas: 1 # tells deployment to run 1 pods matching the template
   template:
     metadata:
       labels:
-        app: cli-could-bridge
+        app: cli-cloud-bridge
     spec:
       containers:
-      - name: cli-serv-bridge
-        image: dhruvi04/cli-cloud-bridge
+      - name: cli-cloud-bridge
+        image: dhruvi04/hw3-cloud-bridge
 

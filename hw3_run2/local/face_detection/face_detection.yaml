@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: face-finder
+  name: face-detection
 spec:
   selector:
     matchLabels:
-      app: face-finder
+      app: face-detection
   replicas: 1 # tells deployment to run 1 pods matching the template
   template:
     metadata:
       labels:
-        app: face-finder
+        app: face-detection
     spec:
       volumes:
       - name: dev-video0
