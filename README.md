@@ -79,7 +79,7 @@ https://w251-dhruvi.s3.amazonaws.com/HW3/02-04-2022-06-21-32_image.png
 
 - **AWS S3 console screenshot:**
 
-![image](./Screen Shot 2022-02-03 at 11.27.34 PM.png)
+![image](./"Screen Shot 2022-02-03 at 11.27.34 PM.png")
 
 ## MQTT
 MQTT is a Client Server publish/subscribe messaging transport protocol. It is light weight, open, simple, and designed so as to be easy to implement. In MQTT, a topic refers to a UTF-8 string that the broker uses to filter messages for each connected client. For the purpose of this project, we used topic `face_detection` to  describe the face detecting sensors (USB camera and haarcascade_frontalface_default.xml). The topic is represented in both the publisher and subscriber codes. 
