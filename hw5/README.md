@@ -33,14 +33,39 @@ The steps are roughly as follows:
 * Should we change the learning rate while training? Our suggestion would be to use something simple: e.g. drop it 10x every 33% of training time.
 * When to stop training? We conscuously set the bar at 60% Top1 (on the validation set) so that you may not need to choose a very heavy model and / or train it forever.
 
-### Please note
-* Please do not attempt to spend more than 3 days training your model on a single T4 GPU. If your estimate gives you a longer training time, pick a different approach.
-* You might want to prototype your work using Jupyter and then submit it using [papermill](https://papermill.readthedocs.io/en/latest/usage-cli.html)
+### Methodology 
 
-### Extra credit
-Create your own model architecture. You can draw your inspiration from the [PyTorch Resnet github](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py), for instance.
+1.  Creating T4 GPU instance with 1TB space
+2.  Use Nvidia Deep Learning AMI with pre-requisites and get the [latest pytorch container image]("https://ngc.nvidia.com/catalog/containers/nvidia:pytorch")
 
+```
+ aws ec2 authorize-security-group-ingress --group-id <security group> --protocol tcp --port 8888 --cidr 0.0.0.0/0
+ ```
+3. Download ImageNet dataset either from http://image-net.org/download-images or using these links [train]("https://w251hw05.s3.us-west-1.amazonaws.com/ILSVRC2012_img_train.tar") and [validation]("https://w251hw05.s3.us-west-1.amazonaws.com/ILSVRC2012_img_val.tar") to directory `data`
 
-### To turn in
-Please turn in your training logs. They should obviously display that you have achieved the Top 1 accuracy.  Also, please save / download the trained weights to your jetson device for evaluation later.
+4.  Prepare the training dataset
+
+```
+mkdir train && mv ILSVRC2012_img_train.tar train/ && cd train
+tar -xvf ILSVRC2012_img_train.tar && rm -f ILSVRC2012_img_train.tar
+find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "${NAME}" -C "${NAME%.tar}"; rm -f "${NAME}"; done
+cd ..
+```
+5. Extract validation dataset 
+
+```
+mkdir val && mv ILSVRC2012_img_val.tar val/ && cd val && tar -xvf ILSVRC2012_img_val.tar
+wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh | bash
+```
+
+6. Spin up nvidia pytorch container using 
+```
+docker run --gpus all -it --rm -v .\data:.\w251 -w .\w251 -p 8888:8888 nvcr.io/nvidia/pytorch:xx.xx-py3
+```
+7. Run jupyter lab in root 
+
+```
+$jupyter lab --ip:0.0.0.0/0 --allow-root
+```
+8. start jupyter notebook using token and begin analysis. 
 
