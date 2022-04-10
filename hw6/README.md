@@ -160,18 +160,13 @@ $ python3 open_images_downloader.py --class-names "Apple,Orange,Banana,Strawberr
 python3 train_ssd.py --data=data/fruit --model-dir=models/fruit --batch-size=4 --epochs=30
 ```
 
-```
-# Resume training checkpoint
-python3 train_ssd.py --data=data/fruit --model-dir=models/fruit  --resume=models/fruit/mb1-ssd-Epoch-28-Loss-3.7590008989424155.pth --batch-size=4 --epochs=30
-```
-
 **3. How long did it take to train the model, how many epochs were specified and batch size.**
 
 **Answer:**
 
-|   Edge Device   | Training Time | Number of Epochs | Batch Size |
-|-----------------|---------------|------------------|------------|
-| Jetson Nano 4GB | ~10 hrs       | 30               | 4          |
+| Number of Epochs | Batch Size |
+|------------------|------------|
+| 30               | 4          |
 
 These are examples of image outputs based on the model:
 
